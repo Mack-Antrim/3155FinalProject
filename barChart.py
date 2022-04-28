@@ -87,6 +87,6 @@ class barChart:
     def update_chart(year):
       return self.barFunction(year)
 
-    app.run_server()
+    app.run_server(debug=True)
       
   
