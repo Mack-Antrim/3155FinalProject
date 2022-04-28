@@ -4,57 +4,63 @@ import plotly.offline as pyo
 import plotly.graph_objs as go
 import config
 
-#authors britt and aiden
-
 
 class multilineChart:
-
     global maxAQIdict
+
+    def __init__(self, state):
+        self.state = state
+
     # A function that creates a multiline chart given a particular state
-    #@staticmethod
-    def multiLineChart(self, state):
+    # @staticmethod
+    # def multilinechart(state1, state2, state3):
 
-        maxAQIdict = {}
 
-        for i in config.years:
-            testString = 'https://raw.githubusercontent.com/Mack-Antrim/3155FinalProject/main/AQI_Data/annual_aqi_by_county_xxxx.csv'
-            url = testString.replace('xxxx', i)
-            # Create a "data" object that is the file
-            data = pd.read_csv(url)
-            df = pd.DataFrame(data)
-            maxAQIdict[i] = {}
-            yearsDict = {}
-            #year = yearDict
-            #inner loop
-            for j in config.state_names:
+def multilineChart(state) -> object:
 
-                isState = (df['State'] == j)
-                isStatedf = df[isState]
-                mean = isStatedf['Max AQI'].mean()
-                yearsDict[j] = mean
+    maxAQIdict = {}
 
-            maxAQIdict[i] = yearsDict
+    for i in config.years:
+        testString = 'https://raw.githubusercontent.com/Mack-Antrim/3155FinalProject/main/AQI_Data/annual_aqi_by_county_xxxx.csv'
+        url = testString.replace('xxxx', i)
+        # Create a "data" object that is the file
+        data = pd.read_csv(url)
+        df = pd.DataFrame(data)
+        maxAQIdict[i] = {}
+        yearsDict = {}
+        # year = yearDict
+        # inner loop
+        for j in config.state_names:
+            isState = (df['State'] == j)
+            isStatedf = df[isState]
+            mean = isStatedf['Max AQI'].mean()
+            yearsDict[j] = mean
 
-        #test access of information by printing each Alabama value - successful
-        #for i in maxAQIdict:
-            #print(maxAQIdict[i]['Alabama'])
-#test making a dataframe out of the dictionary
-        maxAQIperState = pd.DataFrame.from_dict(
-            maxAQIdict,
-            orient="index", columns=config.state_names)
+        maxAQIdict[i] = yearsDict
 
-        trace1 = go.Scatter(x=config.years,
-                            y=maxAQIperState[state],
-                            mode='lines',
-                            name='Average MAX AQI')
+    # test access of information by printing each Alabama value - successful
+    # for i in maxAQIdict:
+    # print(maxAQIdict[i]['Alabama'])
+    # test making a dataframe out of the dictionary
+    maxAQIperState = pd.DataFrame.from_dict(
+        maxAQIdict,
+        orient="index", columns=config.state_names)
 
-        layout = go.Layout(title=state,
-                           xaxis_title="Year",
-                           yaxis_title="MAX AQI")
+    trace1 = go.Scatter(x=config.years,
+                        y=maxAQIperState[state],
+                        mode='lines',
+                        name='Average MAX AQI')
+    data = [trace1]
 
-        return {'data': trace1, 'layout': layout}
+    layout = go.Layout(title=state,
+                       xaxis_title="Year",
+                       yaxis_title="MAX AQI")
 
-        #fig = go.Figure(data=trace1, layout=layout)
+    return {'data': data, 'layout': layout}
 
-        #pyo.plot(fig, filename='testMulti.html')
-    #def multilinechart(state1, state2, state3):
+    # fig = go.Figure(data=trace1, layout=layout)
+
+    # pyo.plot(fig, filename='testMulti.html')
+
+# f = multilineChart()
+# f.multilineChart('Alabama')
