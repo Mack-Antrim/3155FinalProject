@@ -1,3 +1,4 @@
+#Authors: Aidan and Britt
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
 import pandas as pd
@@ -76,7 +77,6 @@ class barChart:
           {'label': '2021', 'value': '2021'}
         ],
         value = "2010"
-        #clearable = False
       ),
       dcc.Graph(id = "graph")
     ])
