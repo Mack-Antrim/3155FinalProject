@@ -11,7 +11,7 @@ class bubbleUS:
 
     def USMapFunction(self, pollutant, year) -> object:
         # testString = 'https://raw.githubusercontent.com/Mack-Antrim/3155FinalProject/main/AQI_Data/annual_aqi_by_county_xxxx.csv'
-        testString = 'MonitorData/annual_conc_by_monitor_2020.csv'
+        testString = 'MonitorData/annual_conc_by_monitor_xxxx.csv'
         url = testString.replace('xxxx', year)
 
         _pollutant = config.pollutant_test.get(pollutant)
@@ -99,3 +99,5 @@ class bubbleUS:
 
 
 
+#b = bubbleUS()
+#b.interactiveBubble()
