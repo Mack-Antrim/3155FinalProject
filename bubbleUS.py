@@ -10,8 +10,8 @@ class bubbleUS:
     # self.year = year
 
     def USMapFunction(self, pollutant, year) -> object:
-        # testString = 'https://raw.githubusercontent.com/Mack-Antrim/3155FinalProject/main/AQI_Data/annual_aqi_by_county_xxxx.csv'
-        testString = 'MonitorData/annual_conc_by_monitor_xxxx.csv'
+        testString = 'https://github.com/Mack-Antrim/3155FinalProject/blob/master/Downloads/3155FinalAnnualConcDataSets/annual_conc_by_monitor_xxxx.csv'
+        #testString = 'MonitorData/annual_conc_by_monitor_xxxx.csv'
         url = testString.replace('xxxx', year)
 
         _pollutant = config.pollutant_test.get(pollutant)
@@ -25,7 +25,7 @@ class bubbleUS:
         new_df['text'] = new_df['County Name'] + ' County, ' + new_df['State Name']
         new_df['CBSA Name'].fillna(new_df['text'], inplace=True)
 
-        #filter new_df down to the required columns
+        # filter new_df down to the required columns
         columns = ['CBSA Name', 'Arithmetic Mean', 'Latitude', 'Longitude']
         new_df = new_df.loc[:, new_df.columns.isin(columns)]
         new_df = new_df.sort_values(by=['Arithmetic Mean'], ascending=False)
@@ -92,12 +92,9 @@ class bubbleUS:
             Input("select-year", 'value')
         )
         def update_chart(radio_name, year_name):
-
             return self.USMapFunction(radio_name, year_name)
 
         app.run_server(debug=True)
 
 
 
-#b = bubbleUS()
-#b.interactiveBubble()
