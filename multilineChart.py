@@ -1,66 +1,77 @@
 import pandas as pd
-import numpy as np
-import plotly.offline as pyo
 import plotly.graph_objs as go
 import config
+from dash import Dash, dcc, html, Input, Output
 
 
 class multilineChart:
-    global maxAQIdict
+    # def __init__(self, state):
+    # self.state = state
 
-    def __init__(self, state):
-        self.state = state
+    def multiline(self, state) -> object:
+        # multiColumnns = ['State', 'MaxAQI']
+        maxAQIperState = pd.DataFrame(columns=['year', 'mean'])
+        for i in config.years:
+            testString = 'https://raw.githubusercontent.com/Mack-Antrim/3155FinalProject/main/AQI_Data/annual_aqi_by_county_xxxx.csv'
+            url = testString.replace('xxxx', i)
+            # Create a "data" object that is the file
+            data = pd.read_csv(url)
+            df = pd.DataFrame(data)
 
-    # A function that creates a multiline chart given a particular state
-    # @staticmethod
-    # def multilinechart(state1, state2, state3):
+            newdf = df[df['State'] == state]
+            newdf = newdf.loc[:, newdf.columns.isin(['State', 'Max AQI'])]
+            newdf['mean'] = newdf['Max AQI'].mean()
+            newdf['year'] = i
+            newdf = newdf.loc[:, newdf.columns.isin(['year', 'mean'])].drop_duplicates()
+            maxAQIperState = pd.concat([maxAQIperState, newdf])
+            # print(newdf)
+
+        trace1 = go.Scatter(x=maxAQIperState['year'],
+                            y=maxAQIperState['mean'],
+                            mode='lines',
+                            name='Average MAX AQI')
+        data = [trace1]
+
+        layout = go.Layout(title=state,
+                           xaxis_title="Year",
+                           yaxis_title="MAX AQI")
+
+        fig = go.Figure(data=data, layout=layout)
+        return fig
+
+    def displayMulti(self):
+        app = Dash()
+
+        app.layout = html.Div([
+            html.H1(children='Python Dash',
+                    style={
+                        'textAlign': 'center',
+                        'color': '#ef3e18'
+                    }
+                    ),
+            html.Div('Web dashboard for Data Visualization using Python', style={'textAlign': 'center'}),
+            html.Div('Average MAX AQI By State -  1/01/2010 to 12/31/2021', style={'textAlign': 'center'}),
+            html.Br(),
+            html.Br(),
+            dcc.Graph(id='line chart'),
+            html.Div('Please select a state', style={'color': '#ef3e18', 'margin': '10px'}),
+            dcc.Dropdown(
+                id='select-state',
+                options=config.state_labels,
+                value='New York'
+            ),
+            html.Br(),
+            html.Br()
+
+        ])
+
+        @app.callback(
+            Output("line chart", "figure"),
+            [Input("select-state", "value")])
+        def update_chart(_state):
+            return self.multiline(_state)
+
+        app.run_server(debug=True)
 
 
-def multilineChart(state) -> object:
 
-    maxAQIdict = {}
-
-    for i in config.years:
-        testString = 'https://raw.githubusercontent.com/Mack-Antrim/3155FinalProject/main/AQI_Data/annual_aqi_by_county_xxxx.csv'
-        url = testString.replace('xxxx', i)
-        # Create a "data" object that is the file
-        data = pd.read_csv(url)
-        df = pd.DataFrame(data)
-        maxAQIdict[i] = {}
-        yearsDict = {}
-        # year = yearDict
-        # inner loop
-        for j in config.state_names:
-            isState = (df['State'] == j)
-            isStatedf = df[isState]
-            mean = isStatedf['Max AQI'].mean()
-            yearsDict[j] = mean
-
-        maxAQIdict[i] = yearsDict
-
-    # test access of information by printing each Alabama value - successful
-    # for i in maxAQIdict:
-    # print(maxAQIdict[i]['Alabama'])
-    # test making a dataframe out of the dictionary
-    maxAQIperState = pd.DataFrame.from_dict(
-        maxAQIdict,
-        orient="index", columns=config.state_names)
-
-    trace1 = go.Scatter(x=config.years,
-                        y=maxAQIperState[state],
-                        mode='lines',
-                        name='Average MAX AQI')
-    data = [trace1]
-
-    layout = go.Layout(title=state,
-                       xaxis_title="Year",
-                       yaxis_title="MAX AQI")
-
-    return {'data': data, 'layout': layout}
-
-    # fig = go.Figure(data=trace1, layout=layout)
-
-    # pyo.plot(fig, filename='testMulti.html')
-
-# f = multilineChart()
-# f.multilineChart('Alabama')
