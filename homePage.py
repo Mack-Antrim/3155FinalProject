@@ -28,7 +28,7 @@ def homePage():
         html.Br(),
         html.Table(className='memberTable',
                    children=[
-                    html.Tr([html.Th('Group Members'), html.Th('Contact')]),]
+                    html.Tr([html.Th('Group Members'), html.Th('References/Contact')]),]
                    + [
                        html.Tr([html.Td('Dexter Osha'), html.Td(html.A("Github", href='https://github.com/Dexter-Osha', target="_blank")), html.Td(html.A("Linkdin", href='https://www.linkedin.com/in/dexter-osha-209380207/', target="_blank"))]),
                        html.Tr([html.Td('Mack Antrim'), html.Td(html.A("Github", href='https://github.com/Mack-Antrim', target="_blank"))]),
