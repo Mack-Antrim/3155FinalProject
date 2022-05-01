@@ -90,7 +90,9 @@ class bubbleUS:
             html.Br(),
             dcc.Link('Go to Multi-Line Chart', href='/multiLine'),
             html.Br(),
-            dcc.Link('Go to Bubble Chart', href='/bubbleChart')
+            dcc.Link('Go to Bubble Chart', href='/bubbleChart'),
+            html.Br(),
+            dcc.Link('Go to Toxin Info Table', href='/infoTable')
         ])
 
         return app

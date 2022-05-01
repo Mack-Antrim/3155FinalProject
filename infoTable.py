@@ -47,6 +47,8 @@ def infoTable():
         html.Br(),
         dcc.Link('Go to Multi-Line Chart', href='/multiLine'),
         html.Br(),
-        dcc.Link('Go to Bubble Chart', href='/bubbleChart')
+        dcc.Link('Go to Bubble Chart', href='/bubbleChart'),
+        html.Br(),
+        dcc.Link('Go to Home Page', href='/homePage')
     ])
     return app

@@ -1,4 +1,8 @@
 import pandas as pd
+import numpy as np
+import plotly.offline as pyo
+import plotly.graph_objs as go
+import pandas as pd
 import plotly.graph_objs as go
 import config
 from dash import Dash, dcc, html, Input, Output
@@ -65,9 +69,9 @@ class multiLineChart:
             html.Br(),
             dcc.Link('Go to Bar Chart', href='/barChart'),
             html.Br(),
-            dcc.Link('Go to Bubble Chart', href='/bubbleChart')
+            dcc.Link('Go to Bubble Chart', href='/bubbleChart'),
+            html.Br(),
+            dcc.Link('Go to Toxin Info Page', href='/infoTable')
         ])
 
         return app
-
-
