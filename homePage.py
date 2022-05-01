@@ -1,4 +1,4 @@
-# Dexter Osha
+# Author: Dexter Osha
 from dash import dcc
 from dash import html
 from dash import Dash
@@ -11,6 +11,7 @@ disclaimer = "Please keep in mind that some loading times may vary because of th
 
 
 app.layout = html.Div(children=[
+
     html.H1(children= landingQuote,
             style={
                 'textAlign': 'center',
@@ -19,6 +20,7 @@ app.layout = html.Div(children=[
                 'width': '50%',
                 'marginLeft': 'auto',
                 'marginRight': 'auto',
+                'border': 'thick solid black'
             }),
     html.Br(),
     html.Br(),
@@ -26,11 +28,11 @@ app.layout = html.Div(children=[
                children=[
                 html.Tr([html.Th('Group Members'), html.Th('Contact')]),]
                + [
-                   html.Tr([html.Td('Dexter Osha'), html.Td('oink')]),
-                   html.Tr([html.Td('Mack Antrim'), html.Td('oink')]),
-                   html.Tr([html.Td('Britt Fields'), html.Td('oink')]),
-                   html.Tr([html.Td('Jaimik Dholiya'), html.Td('oink')]),
-                   html.Tr([html.Td('Aidan Hanger'), html.Td('oink')])
+                   html.Tr([html.Td('Dexter Osha'), html.Td(html.A("Github", href='https://github.com/Dexter-Osha', target="_blank")), html.Td(html.A("Linkdin", href='https://www.linkedin.com/in/dexter-osha-209380207/', target="_blank"))]),
+                   html.Tr([html.Td('Mack Antrim'), html.Td(html.A("Github", href='https://github.com/Mack-Antrim', target="_blank"))]),
+                   html.Tr([html.Td('Britt Fields'), html.Td(html.A("Github", href='https://github.com/bfield-uncc', target="_blank"))]),
+                   html.Tr([html.Td('Jaimik Dholiya'), html.Td(html.A("Github", href='https://github.com/Dexter-Osha', target="_blank"))]),
+                   html.Tr([html.Td('Aidan Hanger'), html.Td(html.A("Github", href='https://github.com/ahanger246', target="_blank"))])
                ],
                style={
                    'border': 'thick solid black',
@@ -49,7 +51,7 @@ app.layout = html.Div(children=[
 
     html.Table(className='graphTable',
                children=[
-                html.Tr([html.Th('Charts'), html.Th('Link')])
+                html.Tr([html.Th('Charts'), html.Th('Visuals')])
                ] + [
                 html.Tr([html.Td('Bar Chart'), html.Td(dcc.Link('Bar Chart', href='/barChart'))]),
                 html.Tr([html.Td('Bubble Chart'), html.Td(dcc.Link('Bubble Chart', href='/bubbleChart'))]),
@@ -68,16 +70,17 @@ app.layout = html.Div(children=[
 
     html.Br(),
     html.Br(),
-    html.H2(children= html.I(disclaimer),
+    html.H2(children=html.I(disclaimer),
             style={
                 'textAlign': 'center',
                 'color': 'ef3e18',
                 'fontSize': 25,
-                'fontStyle': 'italics',
+                'border': 'thick solid black',
                 'width': '50%',
                 'marginLeft': 'auto',
                 'marginRight': 'auto',
             })
+
 
 ])
 
