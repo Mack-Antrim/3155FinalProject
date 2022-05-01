@@ -10,7 +10,7 @@ class bubbleUS:
     # self.year = year
 
     def USMapFunction(self, pollutant, year) -> object:
-        testString = 'https://github.com/Mack-Antrim/3155FinalProject/blob/master/Downloads/3155FinalAnnualConcDataSets/annual_conc_by_monitor_xxxx.csv'
+        testString = 'https://media.githubusercontent.com/media/Mack-Antrim/3155FinalProject/master/Downloads/3155FinalAnnualConcDataSets/annual_conc_by_monitor_xxxx.csv'
         #testString = 'MonitorData/annual_conc_by_monitor_xxxx.csv'
         url = testString.replace('xxxx', year)
 
@@ -97,4 +97,5 @@ class bubbleUS:
         app.run_server(debug=True)
 
 
-
+#b = bubbleUS()
+#b.interactiveBubble()
