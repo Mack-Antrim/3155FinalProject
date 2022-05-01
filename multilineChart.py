@@ -3,12 +3,10 @@ import plotly.graph_objs as go
 import config
 from dash import Dash, dcc, html, Input, Output
 
+class multiLineChart:
 
-class multilineChart:
-    # def __init__(self, state):
-    # self.state = state
-
-    def multiline(self, state) -> object:
+    @staticmethod
+    def multiline(state) -> object:
         # multiColumnns = ['State', 'MaxAQI']
         maxAQIperState = pd.DataFrame(columns=['year', 'mean'])
         for i in config.years:
@@ -39,7 +37,8 @@ class multilineChart:
         fig = go.Figure(data=data, layout=layout)
         return fig
 
-    def displayMulti(self):
+    @staticmethod
+    def displayMulti():
         app = Dash()
 
         app.layout = html.Div([
@@ -61,17 +60,14 @@ class multilineChart:
                 value='New York'
             ),
             html.Br(),
-            html.Br()
-
+            html.Br(),
+            dcc.Link('Go back to Home', href='/'),
+            html.Br(),
+            dcc.Link('Go to Bar Chart', href='/barChart'),
+            html.Br(),
+            dcc.Link('Go to Bubble Chart', href='/bubbleChart')
         ])
 
-        @app.callback(
-            Output("line chart", "figure"),
-            [Input("select-state", "value")])
-        def update_chart(_state):
-            return self.multiline(_state)
-
-        app.run_server(debug=True)
-
+        return app
 
 
