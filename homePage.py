@@ -84,7 +84,23 @@ def homePage():
                     'width': '50%',
                     'marginLeft': 'auto',
                     'marginRight': 'auto',
-                })
+                }),
+        html.Br(),
+        html.Br(),
+        html.Table(className='sources',
+                   children=[
+                       html.Tr([html.Th('Source Of Data')])
+                       ] + [
+                       html.Tr([html.Td(html.A("EPA Website Data-Sets", href='https://aqs.epa.gov/aqsweb/airdata/download_files.html#Annual', target="_blank"))])
+                   ],
+                   style={
+                       'border': 'thick solid black',
+                       'text-align': 'center',
+                       'fontsize': 23,
+                       'width': 600,
+                       'marginLeft': 'auto',
+                       'marginRight': 'auto'
+                   })
 
 
     ])
