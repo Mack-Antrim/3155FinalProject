@@ -14,7 +14,7 @@ def homePage():
                    "for inferences to be made on the major impact to the global climate with changes in lifestyle and industry"
     disclaimer = "Please keep in mind that some loading times may vary because of the size of the datasets we are using. However, You will still be able to view the graphs"
 
-    members = "Dexter Osha, Mack Antrim, Britt Fields, Jaimik Dholyia, Aiden Hanger"
+    members = "Dexter Osha, Mack Antrim, Britt Field, Jaimik Dholyia, Aidan Hanger"
 
 
     app.layout = html.Div(children=[
