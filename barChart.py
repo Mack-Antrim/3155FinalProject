@@ -1,4 +1,3 @@
-# Authors: Aidan and Britt
 from dash import Dash, dcc, html, Input, Output
 import pandas as pd
 import plotly.graph_objs as go
@@ -39,6 +38,12 @@ class barChart:
 
         # plot the figure to HTML file
         fig = go.Figure(data=data, layout=layout)
+        fig.update_layout(color_continuous_scale=[(0.00, "Green"), (50.0, 'Green'), (51.0, 'Yellow'), (100.0, 'Yellow'), (101.0, 'Orange'), (150, 'Orange'), (151, 'Red'), (200, 'Red'), (201, 'Purple'), (300, 'Purple'), (301, 'Black'), (500, 'Black')],
+                          coloraxis_colorbar = dict(
+                              title = 'AQI Ratings',
+                              tickvals = [1, 2, 3, 4, 5],
+                              ticktext = ['Good', 'Moderate', 'Unhealthy for Sensitive Groups', 'Unhealthy', 'Very Unhealthy', 'Hazardous']
+                          ))
         return fig
 
 
@@ -79,4 +84,3 @@ class barChart:
         ])
 
         return app
-
