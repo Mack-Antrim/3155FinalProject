@@ -1,3 +1,6 @@
+# This file creates the interactive bubble chart included in final application
+# Allows users to select desired year and updates the chart accordingly
+
 import pandas as pd
 import config
 from dash import Dash, dcc, html, Input, Output

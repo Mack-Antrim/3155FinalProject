@@ -1,10 +1,14 @@
 # main file to run charts page
 
+from dash import dcc
+from dash import html
+from dash import Dash
+from dash.dependencies import Input, Output
 from dash import Dash, dcc, html, Input, Output, callback
 from dash.dependencies import Input, Output
 from barChart import barChart
 from infoTable import infoTable
-from multilineChart import multiLineChart as m
+from multiline import multiLineChart as m
 from bubbleChart import bubbleUS
 from homePage import homePage
 

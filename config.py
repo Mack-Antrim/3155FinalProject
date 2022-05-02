@@ -1,4 +1,5 @@
-# data module to import into every module we want to access lists
+# Crucial for overall application
+# This file serves as a reference for arrays used in charts and functions
 
 
 state_names = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",

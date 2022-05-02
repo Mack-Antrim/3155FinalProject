@@ -1,4 +1,6 @@
 # Author: Dexter Osha
+# This file creates the splash page for the overall application
+# Has contact information for eac member as well as links to the charts in use
 from dash import dcc
 from dash import html
 from dash import Dash
@@ -7,8 +9,9 @@ from dash import Dash
 def homePage():
     app = Dash(__name__)
 
-    landingQuote = "Welcome to the landing page of Team Twenty's interactive python dash showing the changes of air quality throughout the United States throughout the past 12 years, \n" \
-                   " we are conveying this information through graphical visualization that will lead inference to the the major impact that can be made on the global climate with minor changes in lifestyle "
+    landingQuote = "Welcome to the landing page of Team Twenty's interactive python dash application explaining the different types of pollutants in the air " \
+                   "and showing the changes of air quality throughout the United States within the past 12 years, We are conveying this information through graphical visualization that will allow " \
+                   "for inferences to be made on the major impact to the global climate with changes in lifestyle and industry"
     disclaimer = "Please keep in mind that some loading times may vary because of the size of the datasets we are using. However, You will still be able to view the graphs"
 
 
@@ -28,9 +31,9 @@ def homePage():
         html.Br(),
         html.Table(className='memberTable',
                    children=[
-                    html.Tr([html.Th('Group Members'), html.Th('References/Contact')]),]
-                   + [
-                       html.Tr([html.Td('Dexter Osha'), html.Td(html.A("Github", href='https://github.com/Dexter-Osha', target="_blank")), html.Td(html.A("Linkdin", href='https://www.linkedin.com/in/dexter-osha-209380207/', target="_blank"))]),
+                    html.Tr([html.Th('Group Members'), html.Th('References/Contact')]),
+                    ] + [
+                       html.Tr([html.Td('Dexter Osha'), html.Td(html.A("Github", href='https://github.com/Dexter-Osha', target="_blank"))]),
                        html.Tr([html.Td('Mack Antrim'), html.Td(html.A("Github", href='https://github.com/Mack-Antrim', target="_blank"))]),
                        html.Tr([html.Td('Britt Fields'), html.Td(html.A("Github", href='https://github.com/bfield-uncc', target="_blank"))]),
                        html.Tr([html.Td('Jaimik Dholiya'), html.Td(html.A("Github", href='https://github.com/Dexter-Osha', target="_blank"))]),
@@ -57,7 +60,7 @@ def homePage():
                    ] + [
                     html.Tr([html.Td('Bar Chart'), html.Td(dcc.Link('Bar Chart', href='/barChart'))]),
                     html.Tr([html.Td('Bubble Chart'), html.Td(dcc.Link('Bubble Chart', href='/bubbleChart'))]),
-                    html.Tr([html.Td('Line Chart'), html.Td(dcc.Link('Multi-Line Chart', href='/bubbleUS'))]),
+                    html.Tr([html.Td('Line Chart'), html.Td(dcc.Link('Multi-Line Chart', href='/multiLine'))]),
                     html.Tr([html.Td('Toxin Info Table'), html.Td(dcc.Link('Toxin Info Table', href='/infoTable'))]),
                    ],
                    style={

@@ -1,4 +1,5 @@
 #author Mack
+# This file creats the info table that holds all of the information about AQI and the pollutants that are involved in calculating it
 
 from dash import Dash, dash_table, html, dcc
 import pandas as pd
