@@ -44,12 +44,13 @@ def infoTable():
                        for i in range(min(len(df), 5))
                    ]),
         html.Br(),
-        dcc.Link('Go back to Home', href='/'),
+        html.H1(dcc.Link("Head back to the home page to see the different visualizations", href='/')),
         html.Br(),
         dcc.Link('Go to Bar Chart', href='/barChart'),
         html.Br(),
         dcc.Link('Go to Multi-Line Chart', href='/multiLine'),
         html.Br(),
-        dcc.Link('Go to Bubble Chart', href='/bubbleChart'),
+        dcc.Link('Go to Bubble Chart', href='/bubbleChart')
+
     ])
     return app
