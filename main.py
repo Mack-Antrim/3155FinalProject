@@ -1,9 +1,5 @@
 # main file to run charts page
 
-from dash import dcc
-from dash import html
-from dash import Dash
-from dash.dependencies import Input, Output
 from dash import Dash, dcc, html, Input, Output, callback
 from dash.dependencies import Input, Output
 from barChart import barChart
