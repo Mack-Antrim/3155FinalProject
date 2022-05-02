@@ -87,7 +87,7 @@ class bubbleUS:
             ),
             html.Br(),
             html.Br(),
-            dcc.Link('Go back to home', href='/'),
+            dcc.Link('Go back to Home', href='/'),
             html.Br(),
             dcc.Link('Go to Bar Chart', href='/barChart'),
             html.Br(),
