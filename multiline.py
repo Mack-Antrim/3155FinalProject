@@ -42,6 +42,10 @@ class multiLineChart:
 
     @staticmethod
     def displayMulti():
+
+        lineDescription = "This graph plots the average AQI data for a state from 2010-2021.  The line displays whether the state is trending towards a rising or falling AQI.  A rising AQI indicates the air is becoming less healthy, while a falling AQI indicates the air is becoming healthier."
+        AQIvalues = "AQI Ratings are as follows: Good: 0-50, Moderate: 51- 100 , Unhealthy for Sensitive Groups: 101-150, Unhealthy: 151-200, Very Unhealthy: 201-300, Hazardous: 301-500."
+
         app = Dash()
 
         app.layout = html.Div([
@@ -55,6 +59,9 @@ class multiLineChart:
             html.Div('Average MAX AQI By State -  1/01/2010 to 12/31/2021', style={'textAlign': 'center'}),
             html.Br(),
             html.Br(),
+            html.Div(lineDescription),
+            html.Br(),
+            html.Div(AQIvalues),
             dcc.Graph(id='line chart'),
             html.Div('Please select a state', style={'color': '#ef3e18', 'margin': '10px'}),
             dcc.Dropdown(
@@ -66,11 +73,11 @@ class multiLineChart:
             html.Br(),
             dcc.Link('Go back to Home', href='/'),
             html.Br(),
-            dcc.Link('Go to Bar Chart', href='/barChart'),
+            dcc.Link('View annual state AQIs', href='/barChart'),
             html.Br(),
-            dcc.Link('Go to Bubble Chart', href='/bubbleChart'),
+            dcc.Link('View US pollutant concentrations', href='/bubbleChart'),
             html.Br(),
-            dcc.Link('Go to Toxin Info Page', href='/infoTable')
+            dcc.Link('View Info Table', href='/infoTable')
         ])
 
         return app

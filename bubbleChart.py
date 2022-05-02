@@ -64,10 +64,13 @@ class bubbleUS:
     # A function that creates a barchart with a dropdown menu to select a year
     @staticmethod
     def interactiveBubble():
+        bubbleDescription = "This map shows annual average readings for a selected pollutant across the United States for a given year.  You can change the year using the dropdown menu below the map."
         app = Dash()
 
         app.layout = html.Div([
             html.H1("Max AQI by State"),
+            html.Div(bubbleDescription),
+            html.Br(),
             dcc.RadioItems(
                 options=[
                     {'label': 'Carbon Monoxide', 'value': 'Carbon Monoxide'},
@@ -89,13 +92,11 @@ class bubbleUS:
             html.Br(),
             dcc.Link('Go back to Home', href='/'),
             html.Br(),
-            dcc.Link('Go to Bar Chart', href='/barChart'),
+            dcc.Link('View annual state AQIs', href='/barChart'),
             html.Br(),
-            dcc.Link('Go to Multi-Line Chart', href='/multiLine'),
+            dcc.Link('View state AQI trends', href='/multiLine'),
             html.Br(),
-            dcc.Link('Go to Bubble Chart', href='/bubbleChart'),
-            html.Br(),
-            dcc.Link('Go to Toxin Info Table', href='/infoTable')
+            dcc.Link('View Info Table', href='/infoTable')
         ])
 
         return app

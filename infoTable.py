@@ -44,13 +44,12 @@ def infoTable():
                        for i in range(min(len(df), 5))
                    ]),
         html.Br(),
-        html.H1(dcc.Link("Head back to the home page to see the different visualizations", href='/')),
+        dcc.Link('Go back to Home', href='/'),
         html.Br(),
-        dcc.Link('Go to Bar Chart', href='/barChart'),
+        dcc.Link('View annual state AQIs', href='/barChart'),
         html.Br(),
-        dcc.Link('Go to Multi-Line Chart', href='/multiLine'),
+        dcc.Link('View state AQI trends', href='/multiLine'),
         html.Br(),
-        dcc.Link('Go to Bubble Chart', href='/bubbleChart')
-
+        dcc.Link('View US pollutant concentrations', href='/bubbleChart'),
     ])
     return app

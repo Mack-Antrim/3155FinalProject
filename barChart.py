@@ -46,12 +46,18 @@ class barChart:
     @staticmethod
     def interactiveBarChart():
 
-        barDescription = "This bar graph shows the average AQI for the United States in a given year.  A lower AQI indicates a healthier air quality in that state for the year."
+        barDescription = "This bar graph shows the average AQI for each state in the United States in a given year.  A lower AQI indicates a healthier air quality in that state for the year."
+        AQIvalues = "AQI Ratings are as follows: Good: 0-50, Moderate: 51- 100 , Unhealthy for Sensitive Groups: 101-150, Unhealthy: 151-200, Very Unhealthy: 201-300, Hazardous: 301-500."
+        instructions = "You can use the dropdown menu to visualize any year from 2010-2021."
 
         app = Dash()
         app.layout = html.Div([
             html.H1("Max AQI by State"),
-            html.Div(children=barDescription),
+            html.Div(barDescription),
+            html.Br(),
+            html.Div(AQIvalues),
+            html.Br(),
+            html.Div(instructions),
             dcc.Dropdown(
                 id="select-year",
                 options=[
@@ -74,11 +80,11 @@ class barChart:
             html.Br(),
             dcc.Link('Go back to Home', href='/'),
             html.Br(),
-            dcc.Link('Go to Multi-Line Chart', href='/multiLine'),
+            dcc.Link('View state AQI trends', href='/multiLine'),
             html.Br(),
-            dcc.Link('Go to Bubble Chart', href='/bubbleChart'),
+            dcc.Link('View US pollutant concentrations', href='/bubbleChart'),
             html.Br(),
-            dcc.Link('Go to Info Table', href='/infoTable')
+            dcc.Link('View Info Table', href='/infoTable')
         ])
 
         return app
