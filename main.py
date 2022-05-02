@@ -26,7 +26,7 @@ index_page = homePage().layout
 info_page = infoTable().layout
 
 #The Bar Chart layout and dropdown menu
-#barChart_layout = barChart.interactiveBarChart().layout
+barChart_layout = barChart.interactiveBarChart().layout
 
 @callback(Output("graph", "figure"),
      [Input("select-year", "value")])
