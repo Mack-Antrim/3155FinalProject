@@ -2,10 +2,6 @@
 # allows user to select which year they want to view the AQI data for in every state
 
 import pandas as pd
-import numpy as np
-import plotly.offline as pyo
-import plotly.graph_objs as go
-import pandas as pd
 import plotly.graph_objs as go
 import config
 from dash import Dash, dcc, html, Input, Output
