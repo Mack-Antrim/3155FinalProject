@@ -14,7 +14,7 @@ def homePage():
                    "for inferences to be made on the major impact to the global climate with changes in lifestyle and industry"
     disclaimer = "Please keep in mind that some loading times may vary because of the size of the datasets we are using. However, You will still be able to view the graphs"
 
-    members = "Dexter Osha, Mack Antrim, Britt Field, Jaimik Dholyia, Aidan Hanger"
+    members = "Dexter Osha, Mack Antrim, Britt Fields, Jaimik Dholyia, Aiden Hanger"
 
 
     app.layout = html.Div(children=[
@@ -47,7 +47,7 @@ def homePage():
                     html.Tr([html.Td(dcc.Link("Visualize each state's AQI over the course of one year between 2010 and 2021 using a bar chart", href='/barChart'))]),
                     html.Tr(),
                     html.Tr(),
-                    html.Tr([html.Td(dcc.Link('Visualize the different concentrations of the five main air pollutants throughout the course of a year within the United States using a bubble-map', href='/bubbleChart'))]),
+                    html.Tr([html.Td(dcc.Link('Individually visualize the different concentrations of the five main air pollutants throughout the course of a year within the United States using a bubble-map', href='/bubbleChart'))]),
                     html.Tr(),
                     html.Tr(),
                     html.Tr([html.Td(dcc.Link("Visualize each state's max AQI from the years 2010 - 2021 using a line chart", href='/multiLine'))]),
