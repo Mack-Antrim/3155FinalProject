@@ -1,3 +1,4 @@
+# Authors: Aidan and Britt
 from dash import Dash, dcc, html, Input, Output
 import pandas as pd
 import plotly.graph_objs as go
@@ -14,7 +15,7 @@ class barChart:
         # Create a "data" object that is the file
         data = pd.read_csv(url)
 
-        # Create a data frame  object or "df" using the         "data"   file
+        # Create a data frame object or "df" using the "data" file
         df = pd.DataFrame(data)
 
         maxAQIdict = {'State': [], 'MAX AQI': []}
@@ -38,12 +39,6 @@ class barChart:
 
         # plot the figure to HTML file
         fig = go.Figure(data=data, layout=layout)
-        fig.update_layout(color_continuous_scale=[(0.00, "Green"), (50.0, 'Green'), (51.0, 'Yellow'), (100.0, 'Yellow'), (101.0, 'Orange'), (150, 'Orange'), (151, 'Red'), (200, 'Red'), (201, 'Purple'), (300, 'Purple'), (301, 'Black'), (500, 'Black')],
-                          coloraxis_colorbar = dict(
-                              title = 'AQI Ratings',
-                              tickvals = [1, 2, 3, 4, 5],
-                              ticktext = ['Good', 'Moderate', 'Unhealthy for Sensitive Groups', 'Unhealthy', 'Very Unhealthy', 'Hazardous']
-                          ))
         return fig
 
 
@@ -51,9 +46,12 @@ class barChart:
     @staticmethod
     def interactiveBarChart():
 
+        barDescription = "This bar graph shows the average AQI for the United States in a given year.  A lower AQI indicates a healthier air quality in that state for the year."
+
         app = Dash()
         app.layout = html.Div([
             html.H1("Max AQI by State"),
+            html.Div(children=barDescription),
             dcc.Dropdown(
                 id="select-year",
                 options=[
