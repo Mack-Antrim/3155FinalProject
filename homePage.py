@@ -10,7 +10,7 @@ def homePage():
     app = Dash(__name__)
 
     landingQuote = "Welcome to the landing page of Team Twenty's interactive python dash application explaining the different types of pollutants in the air " \
-                   "and showing the changes of air quality throughout the United States within the past 12 years, We are conveying this information through graphical visualization that will allow " \
+                   "and showing the changes of air quality throughout the United States within the past 12 years.  We are conveying this information through graphical visualization that will allow " \
                    "for inferences to be made on the major impact to the global climate with changes in lifestyle and industry"
     disclaimer = "Please keep in mind that some loading times may vary because of the size of the datasets we are using. However, You will still be able to view the graphs"
 
